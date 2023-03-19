@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "AEE8626D-8D18-475F-AFAD-DA5B7DA9D10E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "502F8D9F-B48A-4C94-A649-5324B644DCEB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeliChallange/Libraries/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getItem(id:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E1EB44C-E5BC-44E7-83A9-FBC6AE21A66D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeliChallangeTests/NetworkTests/NetworkTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "test_GetItem_Success()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4E1EB44C-E5BC-44E7-83A9-FBC6AE21A66D - 2b8894239b1bf9ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MeliChallangeTests.NetworkTests.test_GetItem_ResultNotNil() throws -&gt; ()"
+                  moduleName = "MeliChallangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juan.rezk/Desktop/MeliChallange/MeliChallangeTests/NetworkTests/NetworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  uuid = "4E1EB44C-E5BC-44E7-83A9-FBC6AE21A66D - 8c19cba5227a58b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MeliChallange.FullProduct, Swift.Error&gt;) -&gt; () in MeliChallangeTests.NetworkTests.test_GetItem_ResultNotNil() throws -&gt; ()"
+                  moduleName = "MeliChallangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juan.rezk/Desktop/MeliChallange/MeliChallangeTests/NetworkTests/NetworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "4E1EB44C-E5BC-44E7-83A9-FBC6AE21A66D - 757b07563f91ff64"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MeliChallangeTests.NetworkTests.test_GetItem_Success() throws -&gt; ()"
+                  moduleName = "MeliChallangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juan.rezk/Desktop/MeliChallange/MeliChallangeTests/NetworkTests/NetworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  uuid = "4E1EB44C-E5BC-44E7-83A9-FBC6AE21A66D - 69306e1ff5f889c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MeliChallange.FullProduct, Swift.Error&gt;) -&gt; () in MeliChallangeTests.NetworkTests.test_GetItem_Success() throws -&gt; ()"
+                  moduleName = "MeliChallangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juan.rezk/Desktop/MeliChallange/MeliChallangeTests/NetworkTests/NetworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C329572E-51C3-44FA-B473-8AACA96C86A5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeliChallangeTests/NetworkTests/NetworkTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "test_LoadProductImage_Success()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C329572E-51C3-44FA-B473-8AACA96C86A5 - 4af01a1afc87cc0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MeliChallangeTests.NetworkTests.testImageLoading() throws -&gt; ()"
+                  moduleName = "MeliChallangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juan.rezk/Desktop/MeliChallange/MeliChallangeTests/NetworkTests/NetworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "217">
+               </Location>
+               <Location
+                  uuid = "C329572E-51C3-44FA-B473-8AACA96C86A5 - 8725689d60435854"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; () in MeliChallangeTests.NetworkTests.testImageLoading() throws -&gt; ()"
+                  moduleName = "MeliChallangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juan.rezk/Desktop/MeliChallange/MeliChallangeTests/NetworkTests/NetworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "113">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
