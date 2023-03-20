@@ -94,8 +94,10 @@ class NetworkManager: Manager {
     ///   - limit: number of items limit number
     ///   - completion: Closure that implement an specific block of code when the API request is complete
     func filterProducts(searchText: String, position: Int, limit: Int, completion: @escaping (Result<ProductResult, Error>) -> Void) {
-       
-        let searchValue = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        guard let searchValue = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), !searchText.isEmpty else {
+            completion(.failure(NetworkError.urlError))
+            return
+        }
         var urlString = Constants.filterApiRequestURL + searchValue
         
         if position > 0 {
