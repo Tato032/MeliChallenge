@@ -16,7 +16,6 @@
 		1DC964B029BBE19F00379DC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC964AF29BBE19F00379DC4 /* SceneDelegate.swift */; };
 		1DC964B729BBE1A000379DC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC964B629BBE1A000379DC4 /* Assets.xcassets */; };
 		1DC964BA29BBE1A000379DC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC964B829BBE1A000379DC4 /* LaunchScreen.storyboard */; };
-		1DC964C529BBE1A100379DC4 /* MeliChallangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC964C429BBE1A100379DC4 /* MeliChallangeTests.swift */; };
 		1DC964CF29BBE1A100379DC4 /* MeliChallangeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC964CE29BBE1A100379DC4 /* MeliChallangeUITests.swift */; };
 		1DC964D129BBE1A100379DC4 /* MeliChallangeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC964D029BBE1A100379DC4 /* MeliChallangeUITestsLaunchTests.swift */; };
 		1DC964E529BBE31600379DC4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC964E429BBE31600379DC4 /* DetailViewController.swift */; };
@@ -26,6 +25,7 @@
 		1DC964ED29BBF9FE00379DC4 /* Facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC964EC29BBF9FD00379DC4 /* Facade.swift */; };
 		1DC964F029BE812300379DC4 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC964EF29BE812300379DC4 /* ProductTableViewCell.swift */; };
 		1DC964F229BE8D9C00379DC4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC964F129BE8D9C00379DC4 /* Utils.swift */; };
+		1DF8927B29C889F000BE71CB /* ProductResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF8927A29C889F000BE71CB /* ProductResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,6 @@
 		1DC964B929BBE1A000379DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DC964BB29BBE1A000379DC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DC964C029BBE1A100379DC4 /* MeliChallangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeliChallangeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DC964C429BBE1A100379DC4 /* MeliChallangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeliChallangeTests.swift; sourceTree = "<group>"; };
 		1DC964CA29BBE1A100379DC4 /* MeliChallangeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeliChallangeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC964CE29BBE1A100379DC4 /* MeliChallangeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeliChallangeUITests.swift; sourceTree = "<group>"; };
 		1DC964D029BBE1A100379DC4 /* MeliChallangeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeliChallangeUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		1DC964EC29BBF9FD00379DC4 /* Facade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facade.swift; sourceTree = "<group>"; };
 		1DC964EF29BE812300379DC4 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		1DC964F129BE8D9C00379DC4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		1DF8927A29C889F000BE71CB /* ProductResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +154,6 @@
 			children = (
 				1D6EFA5C29C67F73005494D1 /* CellTests */,
 				1D6EFA5929C678E6005494D1 /* NetworkTests */,
-				1DC964C429BBE1A100379DC4 /* MeliChallangeTests.swift */,
 			);
 			path = MeliChallangeTests;
 			sourceTree = "<group>";
@@ -199,6 +198,7 @@
 			children = (
 				1DC964E829BBECC900379DC4 /* Product.swift */,
 				1DA99FEF29C5437900629D4D /* FullProduct.swift */,
+				1DF8927A29C889F000BE71CB /* ProductResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,6 +355,7 @@
 				1DC964F029BE812300379DC4 /* ProductTableViewCell.swift in Sources */,
 				1DC964F229BE8D9C00379DC4 /* Utils.swift in Sources */,
 				1D5628B029C47234004AD1B6 /* SearchTableViewCell.swift in Sources */,
+				1DF8927B29C889F000BE71CB /* ProductResult.swift in Sources */,
 				1DC964E729BBE33300379DC4 /* ProductListViewController.swift in Sources */,
 				1DA99FF029C5437900629D4D /* FullProduct.swift in Sources */,
 				1DC964ED29BBF9FE00379DC4 /* Facade.swift in Sources */,
@@ -372,7 +373,6 @@
 			files = (
 				1D6EFA5B29C6790B005494D1 /* NetworkTests.swift in Sources */,
 				1D6EFA5E29C67F8C005494D1 /* CellTests.swift in Sources */,
-				1DC964C529BBE1A100379DC4 /* MeliChallangeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -81,7 +81,7 @@ final class NetworkTests: XCTestCase {
 
     func test_FilterProducts_Success_ArrayGreaterThan0() throws {
         let myExpectation = expectation(description: "task in background")
-        Facade.shared.filterData(searchText: "Iphone") { (results) in
+        Facade.shared.filterData(searchText: "Iphone", position: 0, limit: 20) { (results) in
             myExpectation.fulfill()
             switch results {
             case .success(let products):
@@ -97,7 +97,7 @@ final class NetworkTests: XCTestCase {
     
     func test_FilterProducts_Failure() throws {
         let myExpectation = expectation(description: "task in background")
-        Facade.shared.filterData(searchText: "") { (results) in
+        Facade.shared.filterData(searchText: "", position: 0, limit: 20) { (results) in
             myExpectation.fulfill()
             switch results {
             case .success( _ ):
