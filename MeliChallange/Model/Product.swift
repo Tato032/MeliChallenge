@@ -21,7 +21,3 @@ struct Installments: Decodable {
     let quantity: Int
     let amount: Double
 }
-
-struct ProductResult: Decodable {
-    let results: [Product]
-}

@@ -43,6 +43,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         setUpView()
     }
     
+    
+    /// Function thath calls getItem() and executes an action on the view depending the result
     func getItemProperties() {
         guard let id = product?.id else {
             return
@@ -66,6 +68,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    /// Gets the view ready to show their items on screen
     func setUpView() {
         setUpNavBar()
         view.backgroundColor = .white
@@ -93,6 +96,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         navBar?.scrollEdgeAppearance = navBar?.standardAppearance
     }
     
+    /// Loads the product item properties on screen
     func loadData() {
         productTitle.text = product?.title
         productPrice.text = "\(Utils.priceFormatter(number: product?.price ?? 0))"
@@ -121,7 +125,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             stackView.heightAnchor.constraint(equalToConstant: stackViewHeight).isActive = true
         
     }
-
+    
+    //MARK: UI items configuration
     func setScrollViewLayout() {
         scrollView.delegate = self
         scrollView.showsVerticalScrollIndicator = false
@@ -169,6 +174,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         setInstallmentsConstraints()
     }
     
+    //MARK: UI items constraints
     func setScrollViewConstraints() {
         let margins = view.layoutMarginsGuide
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -218,23 +224,5 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         stackView.topAnchor.constraint(equalTo: productInstallments.bottomAnchor, constant: Constants.margin).isActive = true
         stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: Constants.margin).isActive = true
         stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -Constants.margin).isActive = true
-    }
-    
-    func setAttributes() {
-        var yPosition = 530
-        for attr in fullProduct?.attributes ?? [] {
-                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 180, height: 35))
-                label.center = CGPoint(x: 120, y: yPosition)
-                label.textAlignment = .left
-                
-                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)]
-                let attributedString = NSMutableAttributedString(string: "\(attr.name ?? ""): ", attributes:attrs)
-                let normalString = NSMutableAttributedString(string: "\(attr.value_Name ?? "")")
-                attributedString.append(normalString)
-                label.attributedText = attributedString
-                yPosition += 30
-                label.textColor = UIColor.black
-                view.addSubview(label)
-        }
     }
 }

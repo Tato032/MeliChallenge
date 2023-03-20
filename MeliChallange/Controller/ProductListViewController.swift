@@ -40,6 +40,9 @@ class ProductListViewController: UIViewController {
     var products: [Product] = []
     var searches: [String] = []
     var isFiltering = false
+    var position = 0
+    var limit = 25
+    var paging: Paging?
     
     /// Function used to obtain all the searches so that can be shown on a search history
     func getSearchFromMemory() {
@@ -103,16 +106,19 @@ class ProductListViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    /// Show the table on screen
     func showTable() {
         tableView.isHidden = false
         tableView.reloadData()
     }
     
+    /// Show the searchBar on screen
     func showSearchTable() {
         searchTableView.isHidden = false
         searchTableView.reloadData()
     }
     
+    /// Show a loader on screen
     func showActivityIndicator() {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
@@ -194,10 +200,36 @@ class ProductListViewController: UIViewController {
             searchTableView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
+    
+    func filterAction(searchBarText: String, position: Int, limit: Int) {
+        let searchString = searchBarText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        searchTableView.isHidden = true
+        searchBar.endEditing(true)
+        Facade.shared.filterData(searchText: searchString!, position: position, limit: limit) {
+            [weak self] result in
+            switch result {
+            case .success(let products):
+                self?.paging = products.paging
+                self?.products = products.results
+                self?.isFiltering = true
+                DispatchQueue.main.async {
+                    self?.searchBar.showsCancelButton = false
+                    self?.showTable()
+                }
+            case .failure(_):
+                guard let self = self else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    Utils.showAlert(on: self, with: "Error", message: "Ocurrio un error al filtrar las peliculas")
+                }
+            }
+        }
+    }
 }
 
 extension ProductListViewController: UITableViewDataSource, UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.tableView {
             return products.count
@@ -239,7 +271,18 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
             showActivityIndicator()
             searchBar.text = selectedText
             tableView.deselectRow(at: indexPath, animated: true)
-            filterAction(searchBarText: selectedText)
+            filterAction(searchBarText: selectedText, position: position, limit: limit)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let searchBarText = searchBar.text else {
+            return
+        }
+        if indexPath.row + 1 == products.count && products.count > 25 && self.products.count < self.paging?.total ?? 0 {
+            position += 25
+            let limitAux = self.products.count + limit > self.paging?.total ?? 0 ? (self.paging?.total ?? 0) - self.products.count : limit
+            filterAction(searchBarText: searchBarText, position: position, limit: limitAux)
         }
     }
 }
@@ -268,31 +311,6 @@ extension ProductListViewController: UISearchBarDelegate {
         }
         showActivityIndicator()
         addSearchToMyList(searchedText: searchBarText)
-        filterAction(searchBarText: searchBarText)
-    }
-    
-    func filterAction(searchBarText: String) {
-        let searchString = searchBarText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        searchTableView.isHidden = true
-        searchBar.endEditing(true)
-        Facade.shared.filterData(searchText: searchString!) {
-            [weak self] result in
-            switch result {
-            case .success(let products):
-                self?.products = products.results
-                self?.isFiltering = true
-                DispatchQueue.main.async {
-                    self?.searchBar.showsCancelButton = false
-                    self?.showTable()
-                }
-            case .failure(_):
-                guard let self = self else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    Utils.showAlert(on: self, with: "Error", message: "Ocurrio un error al filtrar las peliculas")
-                }
-            }
-        }
+        filterAction(searchBarText: searchBarText, position: position, limit: limit)
     }
 }

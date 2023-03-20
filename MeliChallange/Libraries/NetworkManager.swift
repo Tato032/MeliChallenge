@@ -11,7 +11,7 @@ import UIKit
 protocol Manager {
     func getItem(id: String, completion: @escaping (Result<FullProduct, Error>) -> Void)
     func loadImageUsingCacheWithUrlString(_ urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void)
-    func filterProducts(searchText: String, completion: @escaping (Result<ProductResult, Error>) -> Void)
+    func filterProducts(searchText: String, position: Int, limit: Int, completion: @escaping (Result<ProductResult, Error>) -> Void)
 }
 
 enum NetworkError: Error {
@@ -90,12 +90,26 @@ class NetworkManager: Manager {
     /// Method use to find products by filtering them
     /// - Parameters:
     ///   - searchText: An string with the given word used to filter
+    ///   - position: position of the search
+    ///   - limit: number of items limit number
     ///   - completion: Closure that implement an specific block of code when the API request is complete
-    func filterProducts(searchText: String, completion: @escaping (Result<ProductResult, Error>) -> Void) {
-        guard let url = URL(string: Constants.filterApiRequestURL + searchText), !searchText.isEmpty else {
+    func filterProducts(searchText: String, position: Int, limit: Int, completion: @escaping (Result<ProductResult, Error>) -> Void) {
+       
+        let searchValue = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        var urlString = Constants.filterApiRequestURL + searchValue
+        
+        if position > 0 {
+            urlString += "&offset=\(position)"
+         }
+         
+         if limit > 0 {
+             urlString += "&limit=\(limit)"
+         }
+        guard let url = URL(string: urlString), !searchText.isEmpty else {
             completion(.failure(NetworkError.urlError))
             return
         }
+        
         let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil, let myResponse = response as? HTTPURLResponse, myResponse.statusCode == 200, let myData = data else {
                 completion(.failure(NetworkError.urlError))

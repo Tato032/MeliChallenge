@@ -22,7 +22,7 @@ final class Facade {
         networkManager.loadImageUsingCacheWithUrlString(urlString, completion: result)
     }
     
-    func filterData(searchText: String, result: @escaping (Result<ProductResult, Error>) -> Void) {
-        networkManager.filterProducts(searchText: searchText, completion: result)
+    func filterData(searchText: String, position: Int, limit: Int, result: @escaping (Result<ProductResult, Error>) -> Void) {
+        networkManager.filterProducts(searchText: searchText, position: position, limit: limit, completion: result)
     }
 }
