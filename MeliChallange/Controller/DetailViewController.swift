@@ -113,7 +113,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                 let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
                 label.numberOfLines = 1
                 label.textColor = .black
-                label.center = CGPoint(x: 150, y: 300)
+                label.center = CGPoint(x: 100, y: 300)
                 label.textAlignment = .left
                 label.font = Utils.setFont(size: 19)
                 label.text = "\(attribute.name ?? ""): " + "\(attribute.value_name ?? "")"
