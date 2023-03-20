@@ -10,7 +10,7 @@ import UIKit
 
 protocol Manager {
     func getItem(id: String, completion: @escaping (Result<FullProduct, Error>) -> Void)
-    func loadImageUsingCacheWithUrlString(_ urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void)
+    func loadImage(_ urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void)
     func filterProducts(searchText: String, position: Int, limit: Int, completion: @escaping (Result<ProductResult, Error>) -> Void)
 }
 
@@ -55,18 +55,18 @@ class NetworkManager: Manager {
         
     }
     
-    let imageCache = NSCache<NSString, AnyObject>()
-    
-    /// Method use to save an image on the cache memory in case is not in there yet
+    /// Method gets the image by it's url. Before it was done using cache memory but because of a lack of perfomance because of the number of images saved was changed for this method
+    /// Looking for implement with cache anyway but with some restriction in the number of load images in order to avoid lack of performance
     /// - Parameters:
     ///   - urlString: URL of an specific image to save
     ///   - completion: Closure that implement an specific block of code when the API request is complete
-    func loadImageUsingCacheWithUrlString(_ urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        if let cachedImage = imageCache.object(forKey: "\(urlString)" as NSString) as? UIImage {
-            completion(.success(cachedImage))
-            return
-        }
-        //No cache, so create new one and set image
+    func loadImage(_ urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        
+//        if let cachedImage = Facade.shared.imageCache.object(forKey: "\(urlString)" as NSString) as? UIImage {
+//            completion(.success(cachedImage))
+//            return
+//        }
+//        //No cache, so create new one and set image
         guard let url = URL(string: "\(urlString)") else {
             completion(.failure(NetworkError.urlError))
             return
@@ -81,7 +81,6 @@ class NetworkManager: Manager {
                     completion(.failure(NetworkError.dataError))
                     return
                 }
-                self.imageCache.setObject(downloadedImage, forKey: "\(urlString)" as NSString)
                 completion(.success(downloadedImage))
             })
         }).resume()

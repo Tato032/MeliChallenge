@@ -19,7 +19,7 @@ final class Facade {
     }
     
     func loadProductImage(_ urlString: String, result: @escaping (Result<UIImage, Error>) -> Void) {
-        networkManager.loadImageUsingCacheWithUrlString(urlString, completion: result)
+        networkManager.loadImage(urlString, completion: result)
     }
     
     func filterData(searchText: String, position: Int, limit: Int, result: @escaping (Result<ProductResult, Error>) -> Void) {
