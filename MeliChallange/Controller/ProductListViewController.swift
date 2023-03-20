@@ -208,7 +208,7 @@ class ProductListViewController: UIViewController {
             switch result {
             case .success(let products):
                 self?.paging = products.paging
-                self?.products += products.results
+                self?.products = products.results
                 self?.isFiltering = true
                 DispatchQueue.main.async {
                     self?.searchBar.showsCancelButton = false
@@ -219,7 +219,27 @@ class ProductListViewController: UIViewController {
                     return
                 }
                 DispatchQueue.main.async {
-                    Utils.showAlert(on: self, with: "Error", message: "Ocurrio un error al filtrar las peliculas")
+                    Utils.showAlert(on: self, with: "Error", message: "Ocurrio un error al filtrar los productos")
+                }
+            }
+        }
+    }
+    
+    func extendTable(searchText: String) {
+        Facade.shared.filterData(searchText: searchText, position: position, limit: limit) {
+            [weak self] result in
+            switch result {
+            case .success(let products):
+                self?.products += products.results
+                DispatchQueue.main.async {
+                    self?.showTable()
+                }
+            case .failure(_):
+                guard let self = self else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    Utils.showAlert(on: self, with: "Error", message: "Ocurrio un error al buscar mas productos")
                 }
             }
         }
@@ -240,7 +260,7 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
         var cellToReturn = UITableViewCell()
         if tableView == self.tableView {
             let product = products[indexPath.row]
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell") as? ProductTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell else {
                 return cellToReturn
             }
             cell.setUp(product: product)
@@ -280,7 +300,7 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
         if indexPath.row + 1 == products.count && products.count > 24 && self.products.count < self.paging?.total ?? 0 {
             position += 25
             let limitAux = self.products.count + limit > self.paging?.total ?? 0 ? (self.paging?.total ?? 0) - self.products.count : limit
-            filterAction(searchBarText: searchBarText, position: position, limit: limitAux)
+            extendTable(searchText: searchBarText)
         }
     }
 }
@@ -296,6 +316,7 @@ extension ProductListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
+        position  = 0
         if !isFiltering {
             searchBar.text = ""
         }
