@@ -98,7 +98,11 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     func loadData() {
         productTitle.text = product?.title
         productPrice.text = "\(Utils.priceFormatter(number: product?.price ?? 0))"
+        if product?.installments?.quantity ?? 0 > 0 {
         productInstallments.text = "en \(product?.installments?.quantity ?? 0) cuotas de \(Utils.priceFormatter(number: product?.installments?.amount ?? 0))"
+        } else {
+            productInstallments.text = "No especifica precio de cuotas"
+        }
         if let url = fullProduct?.pictures?[0].url {
             productImage.loadImage(url: url)
         } else {
