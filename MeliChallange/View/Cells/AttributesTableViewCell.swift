@@ -68,6 +68,6 @@ class AttributesTableViewCell: UITableViewCell {
     
     func setUp(attribute: Attributes?) {
         attributeName.text = attribute?.name
-        attributeDescription.text = attribute?.value_Name
+        attributeDescription.text = attribute?.value_name
     }
 }

@@ -18,5 +18,5 @@ struct Pictures: Decodable {
 
 struct Attributes: Decodable {
     let name: String?
-    let value_Name: String? 
+    let value_name: String? 
 }

@@ -109,14 +109,14 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         
         var stackViewHeight = CGFloat(0)
         for attribute in fullProduct?.attributes ?? [] {
-            if attribute.value_Name != nil {
+            if attribute.value_name != nil {
                 let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
                 label.numberOfLines = 1
                 label.textColor = .black
                 label.center = CGPoint(x: 150, y: 300)
                 label.textAlignment = .left
                 label.font = Utils.setFont(size: 19)
-                label.text = "\(attribute.name ?? ""): " + "\(attribute.value_Name ?? "")"
+                label.text = "\(attribute.name ?? ""): " + "\(attribute.value_name ?? "")"
                 
                 stackView.addArrangedSubview(label)
                 stackViewHeight += CGFloat(40)
