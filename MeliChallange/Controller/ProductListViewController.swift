@@ -208,7 +208,7 @@ class ProductListViewController: UIViewController {
             switch result {
             case .success(let products):
                 self?.paging = products.paging
-                self?.products = products.results
+                self?.products += products.results
                 self?.isFiltering = true
                 DispatchQueue.main.async {
                     self?.searchBar.showsCancelButton = false
@@ -277,7 +277,7 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
         guard let searchBarText = searchBar.text else {
             return
         }
-        if indexPath.row + 1 == products.count && products.count > 25 && self.products.count < self.paging?.total ?? 0 {
+        if indexPath.row + 1 == products.count && products.count > 24 && self.products.count < self.paging?.total ?? 0 {
             position += 25
             let limitAux = self.products.count + limit > self.paging?.total ?? 0 ? (self.paging?.total ?? 0) - self.products.count : limit
             filterAction(searchBarText: searchBarText, position: position, limit: limitAux)

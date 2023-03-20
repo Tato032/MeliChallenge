@@ -45,7 +45,7 @@ class ProductTableViewCell: UITableViewCell {
         super.prepareForReuse()
         productTitle.text = ""
         productDescription.text = ""
-        productImage.image = UIImage(named: "")
+        productImage.image = nil
     }
     
     func setUp() {
