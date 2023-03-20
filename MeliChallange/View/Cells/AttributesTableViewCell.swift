@@ -25,8 +25,6 @@ class AttributesTableViewCell: UITableViewCell {
         super.prepareForReuse()
         attributeName.text = ""
         attributeDescription.text = ""
-        setNameLayout()
-        setDescriptionLayout()
     }
     
     func setUp() {

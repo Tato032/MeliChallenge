@@ -12,8 +12,6 @@ let userDefaults = UserDefaults.standard
 class ProductListViewController: UIViewController {
     
     private enum Constants {
-        static let backgroundColor = UIColor(ciColor: .gray)
-        static let margin = CGFloat(10)
         static let cornerRadius = CGFloat(5)
         static let rowHeight = CGFloat(150)
     }

@@ -11,8 +11,6 @@ import UIKit
 class DetailViewController: UIViewController, UIScrollViewDelegate {
     enum Constants {
         static let margin = CGFloat(10)
-        static let cornerRadius = CGFloat(5)
-        static let borderWidth = CGFloat(2)
     }
     
     private var contentView: UIView = {
